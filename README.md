@@ -36,9 +36,13 @@ yaya template是一个轻量级前端模版，所用指令仅需{$...$}和{%...%
 	});
 
 4.得到结果
+	
 	嘻嘻 1
 	
 
-## 速度测试
+## 更多
+
+地址：http://uloveit.com.cn/template/
+测速：http://uloveit.com.cn/template/speedtest.htm
 
 © uloveit.com.cn 
