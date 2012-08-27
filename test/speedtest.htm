@@ -4,7 +4,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>template test</title>
-<script src="js/yaya-template.js"></script>
 <script src="js/jquery-1.7.2.min.js"></script>
 <script src="js/highcharts.js"></script>
 <script src="js/arttemplate.js"></script>
@@ -18,7 +17,7 @@
 <script src="js/baidu.template.js"></script>
 <script src="js/jquery.tmpl.js"></script>
 <script src="js/easytemplate.js"></script>
-
+<script src="js/yaya-template.js"></script>
 <script>
 // 数据量
 
@@ -45,8 +44,18 @@ for (var i = 0; i < length; i ++) {
 // 待测试的引擎列表
 var testList = [
 
+    {
+        name: 'artTemplate',
+        tester: function () {
+            var source = document.getElementById('template').innerHTML;
+            var fn = template(source);
+            for (var i = 0; i < number; i ++) {
+                fn(data);
+            }
+        }
+    },
 
-	{
+    {
         name:'YayaTemplate',
         tester:function () {
             var source = document.getElementById('yayatemplate').innerHTML;
@@ -58,17 +67,6 @@ var testList = [
         }
 
 
-    },
-
-    {
-        name: 'artTemplate',
-        tester: function () {
-            var source = document.getElementById('template').innerHTML;
-            var fn = template(source);
-            for (var i = 0; i < number; i ++) {
-                fn(data);
-            }
-        }
     },
     
     {
@@ -306,6 +304,14 @@ var startTest = function () {
 </script>
 
 
+<!-- artTemplate 的模板 -->
+<script id="template" type="text/tmpl">
+<ul>
+	<% for (var i = 0, l = list.length; i < l; i ++) { %>
+		<li><%=list[i].index%>. 用户: <%=list[i].user%>/ 网站：<%=list[i].site%></li>
+	<% } %>
+</ul>
+</script>
 
 
 <!-- yayatemplate 的模板 -->
@@ -317,14 +323,6 @@ var startTest = function () {
 {$</ul>$}
 </script>
 
-<!-- artTemplate 的模板 -->
-<script id="template" type="text/tmpl">
-<ul>
-	<% for (var i = 0, l = list.length; i < l; i ++) { %>
-		<li><%=list[i].index%>. 用户: <%=list[i].user%>/ 网站：<%=list[i].site%></li>
-	<% } %>
-</ul>
-</script>
 
 <!-- baidu-template 的模板 -->
 <script id="baidu-template" type="text/tmpl">
